@@ -82,7 +82,7 @@
 -(void)addCow {
     cow = [[Cow alloc] initWithName:@"cow"
                                  inScene:self];
-    cow.view.center =CGPointMake(250, self.view.bounds.size.height-110);
+    cow.view.center =CGPointMake(250, self.view.bounds.size.height-125);
     printf("%3.0f",self.view.bounds.size.height);
     [self addSprite:cow];
 }
@@ -91,7 +91,7 @@
     lady = [[Lady alloc] initWithName:@"lady"
                                ownView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lady.jpg"]]
                                inScene:self];
-    lady.view.frame =CGRectMake(self.view.bounds.size.width-200, self.view.bounds.size.height-200, 200, 225);
+    lady.view.frame =CGRectMake(self.view.bounds.size.width-180, self.view.bounds.size.height-215, 180, 205);
     [self addSprite:lady];
     
 }

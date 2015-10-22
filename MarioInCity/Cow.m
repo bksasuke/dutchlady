@@ -17,7 +17,7 @@
     
     self = [super initWithName:name
                        inScene:scene];
-    CowView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 220, 180)];
+    CowView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 110)];
     
     CowView.userInteractionEnabled = true;
     CowView.multipleTouchEnabled = true;
@@ -41,11 +41,11 @@
 -(void) movingDairyCow {
     CowView.transform = CGAffineTransformIdentity;
     [UIView animateWithDuration:5 animations:^{
-        CowView.center =CGPointMake(250-100, 310);
+        CowView.center =CGPointMake(250-100, 285);
     } completion:^(BOOL finished) {
-        CowView.transform = CGAffineTransformMakeScale(-1, 1);
+        CowView.transform = CGAffineTransformMakeScale(-1,1);
         [UIView animateWithDuration:5 animations:^{
-            CowView.center = CGPointMake(250+100, 305);
+            CowView.center = CGPointMake(250+100, 295);
         } completion:^(BOOL finished){
             [self movingDairyCow];
         }];
