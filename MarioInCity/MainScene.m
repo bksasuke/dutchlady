@@ -38,7 +38,8 @@
     [self addWindmill];
     [self addLady];
     [self addCow];
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+   
+    timer = [NSTimer scheduledTimerWithTimeInterval:2
                                              target:self
                                            selector:@selector(gameloop)
                                            userInfo:nil
@@ -46,9 +47,9 @@
 }
 - (void) addGrassField {
     
-    UIImage* cityBackground = [UIImage imageNamed:@"city.jpg"];
+    UIImage* grassfield = [UIImage imageNamed:@"city.jpg"];
     grass = [[City alloc] initWithName:@"grass"
-                               ownView:[[UIImageView alloc] initWithImage:cityBackground]
+                               ownView:[[UIImageView alloc] initWithImage:grassfield]
                                inScene:self];
     grass.view.frame = self.view.bounds;
     [self.view addSubview:grass.view];
@@ -57,13 +58,13 @@
 - (void) addClouds {
     cloud1 = [[Cloud alloc] initWithName:@"cloud1"
                                  ownView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cloud1.png"]]
-                                 inScene:self]; cloud1.speed = - 10.0;
+                                 inScene:self]; cloud1.speed = - 50.0;
     cloud2 = [[Cloud alloc] initWithName:@"cloud2"
                                  ownView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cloud2.png"]]
-                                 inScene:self];cloud2.speed = - 5.0;
+                                 inScene:self];cloud2.speed =  20.0;
     cloud3 = [[Cloud alloc] initWithName:@"cloud3"
                                  ownView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cloud3.png"]]
-                                 inScene:self];cloud3.speed = - 8.0;
+                                 inScene:self];cloud3.speed =  60.0;
     cloud1.view.frame = CGRectMake(20, 15, 100, 100);
     cloud2.view.frame = CGRectMake(150, 3, 80, 80);
     cloud3.view.frame = CGRectMake(260, 7, 90, 90);
@@ -81,16 +82,16 @@
 -(void)addCow {
     cow = [[Cow alloc] initWithName:@"cow"
                                  inScene:self];
-    cow.view.frame =CGRectMake(250, 240, 200, 225);
+    cow.view.center =CGPointMake(250, self.view.bounds.size.height-110);
+    printf("%3.0f",self.view.bounds.size.height);
     [self addSprite:cow];
 }
-
 
 -(void)addLady {
     lady = [[Lady alloc] initWithName:@"lady"
                                ownView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lady.jpg"]]
                                inScene:self];
-    lady.view.frame =CGRectMake(400, 240, 200, 225);
+    lady.view.frame =CGRectMake(self.view.bounds.size.width-200, self.view.bounds.size.height-200, 200, 225);
     [self addSprite:lady];
     
 }

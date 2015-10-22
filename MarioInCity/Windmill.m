@@ -15,7 +15,7 @@
     
     self = [super initWithName:name
                        inScene:scene];
-    UIImageView* WindmillView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180, 250)];
+    UIImageView* WindmillView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 220)];
     
     WindmillView.userInteractionEnabled = true;
     WindmillView.multipleTouchEnabled = true;

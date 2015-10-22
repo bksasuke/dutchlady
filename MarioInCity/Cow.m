@@ -9,26 +9,52 @@
 #import "Cow.h"
 
 @implementation Cow
+{
+    UIImageView *CowView;
+}
 - (instancetype) initWithName:(NSString *)name
                       inScene:(Scene *)scene {
     
     self = [super initWithName:name
                        inScene:scene];
-    UIImageView* WindmillView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180, 250)];
+    CowView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 220, 180)];
     
-    WindmillView.userInteractionEnabled = true;
-    WindmillView.multipleTouchEnabled = true;
+    CowView.userInteractionEnabled = true;
+    CowView.multipleTouchEnabled = true;
     
-    WindmillView.animationImages = @[
+    CowView.animationImages = @[
                                      [UIImage imageNamed:@"cow1.png"],
                                      [UIImage imageNamed:@"cow2.png"],
                                      [UIImage imageNamed:@"cow3.png"],
                                      [UIImage imageNamed:@"cow4.png"],
+                                     [UIImage imageNamed:@"cow5.png"],
+                                     [UIImage imageNamed:@"cow6.png"],
+                                     [UIImage imageNamed:@"cow7.png"],
                                      ];
-    WindmillView.animationDuration = 1.0;
-    [WindmillView startAnimating];
-    self.view = WindmillView;
+    CowView.animationDuration = 3.0;
+    [CowView startAnimating];
+    
+    self.view = CowView;
     return self;
+   
+}
+-(void) movingDairyCow {
+    CowView.transform = CGAffineTransformIdentity;
+    [UIView animateWithDuration:5 animations:^{
+        CowView.center =CGPointMake(250-100, 310);
+    } completion:^(BOOL finished) {
+        CowView.transform = CGAffineTransformMakeScale(-1, 1);
+        [UIView animateWithDuration:5 animations:^{
+            CowView.center = CGPointMake(250+100, 305);
+        } completion:^(BOOL finished){
+            [self movingDairyCow];
+        }];
+        
+    }];
+}
+
+-(void) animate {
+    [self movingDairyCow];
 }
 
 @end
